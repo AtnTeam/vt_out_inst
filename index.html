@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Вихід з Instagram браузера</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    function openInDefaultBrowser() {
+      // Вкажіть ваше посилання тут
+      var targetUrl = "https://at.bizkey.space";
+
+      // Виявлення Android за допомогою userAgent
+      var isAndroid = /android/i.test(navigator.userAgent);
+
+      if (isAndroid) {
+        // Формуємо посилання для Android через intent
+        var strippedUrl = targetUrl.replace(/^https?:\/\//, '');
+        var intentUrl = "intent://" + strippedUrl + "#Intent;scheme=https;package=com.android.chrome;end";
+        window.location = intentUrl;
+      } else {
+        // Для інших пристроїв відкриваємо посилання у новій вкладці
+        window.open(targetUrl, '_blank');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button onclick="openInDefaultBrowser()">Відкрити посилання у браузері</button>
+</body>
+
+</html>
